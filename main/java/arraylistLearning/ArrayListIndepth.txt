@@ -1,0 +1,54 @@
+📌 ArrayList – Quick Notes (Java)
+🧠 One-line Memory
+👉 “ArrayList starts at 0 → becomes 10 → then grows by 1.5x (not double).
+
+Default → empty array
+First add → capacity 10 (lazy initialization=  after adding first element it creates an array of size 10)
+Then → grows by 50% (1.5x)   - > new Capacity = old capacity + (old capacity >> 1)  - using right shift operator (>>1) for division by 2.
+Resize → copies elements (costly)
+
+🔹 Thread Safety
+❌ ArrayList is not thread-safe
+Multiple threads → ❌ unpredictable behavior / data corruption
+
+✅ Make it thread-safe:
+Collections.synchronizedList(list)
+CopyOnWriteArrayList (from java.util.concurrent)
+
+🔹 Time Complexity
+| Operation          | Complexity | Reason               |
+| ------------------ | ---------- | -------------------- |
+| Access (`get`)     | O(1)       | Direct index access  |
+| Insertion (middle) | O(n)       | Elements shift right |
+| Deletion (middle)  | O(n)       | Elements shift left  |
+
+🔹 Key Points
+Internally uses dynamic array
+Fast for:
+✅ Reading
+✅ Iteration
+Slow for:
+❌ Insert/Delete in middle
+🔹 Imports (Important)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+🔥 Interview One-Liners
+"ArrayList is not thread-safe, needs synchronization"
+"Access is O(1), insert/delete is O(n) due to shifting"
+"Best for read-heavy operations"
+
+
+📌 ArrayList Insertion Complexity (Clear Answer)
+🔹 Insertion at END
+list.add(x);
+👉 ✅ O(1) (Amortized)
+👉 ❌ O(n) (Worst case)
+
+Why?
+Normally → just place element → O(1)
+But if array is full → resize + copy → O(n)
+
+
