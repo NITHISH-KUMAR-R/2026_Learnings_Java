@@ -2,7 +2,7 @@ package multithreading;
 
 public class ThreadDemo {
 
-    public static void main(String a[]){
+    public static void main(String a[]) throws InterruptedException {
         //A Thread is the smallest unit of execution inside a program.
 
 
@@ -19,6 +19,7 @@ public class ThreadDemo {
         t1.setPriority(Thread.MAX_PRIORITY);
         t1.start();
 
+        t1.join(); // Wait for t1 to finish before starting t2
 
         Thread t2 = new Thread(()->{
             for(int i =0;i<50;i++){
@@ -44,6 +45,11 @@ public class ThreadDemo {
         //
         //✅ It only suggests scheduling preference
     }
+
+    //What is Preemptive Scheduling?
+    //
+    //OS can pause a running thread anytime and give CPU to another
+
 
 
 }
